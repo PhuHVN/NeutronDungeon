@@ -3,7 +3,8 @@
 --- !u!78 &1
 TagManager:
   serializedVersion: 3
-  tags: []
+  tags:
+  - PlayerBullet
   layers:
   - Default
   - TransparentFX
@@ -11,9 +12,9 @@ TagManager:
   - 
   - Water
   - UI
-  - 
-  - 
-  - 
+  - PlayerBullet
+  - Map
+  - Player
   - 
   - 
   - 
@@ -43,6 +44,12 @@ TagManager:
     locked: 0
   - name: Map
     uniqueID: 522863225
+    locked: 0
+  - name: Player
+    uniqueID: 429169967
+    locked: 0
+  - name: Bullet
+    uniqueID: 1124822561
     locked: 0
   m_RenderingLayers:
   - Default
