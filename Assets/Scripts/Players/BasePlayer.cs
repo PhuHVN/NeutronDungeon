@@ -5,7 +5,7 @@ public class BasePlayer : MonoBehaviour
     public static BasePlayer instance;
 
     [Header("Movement")]
-    [SerializeField] private float moveSpeed = 5f;
+    [SerializeField] private float moveSpeed = 15f;
 
     [Header("Health")]
     public float maxHealth;
@@ -39,17 +39,28 @@ public class BasePlayer : MonoBehaviour
         spriteRenderer = GetComponent<SpriteRenderer>();
         currentHealth = maxHealth;
         mainCam = Camera.main;
+        rb.interpolation = RigidbodyInterpolation2D.Interpolate;
     }
 
     protected virtual void Update()
     {
         movement.x = Input.GetAxisRaw("Horizontal");
         movement.y = Input.GetAxisRaw("Vertical");
-        animator.SetFloat("speed", Mathf.Abs(movement.sqrMagnitude));
+
+        float targetSpeed = movement.magnitude;
+        float currentSpeed = animator.GetFloat("speed");
+        float smoothSpeed = Mathf.Lerp(currentSpeed, targetSpeed, Time.deltaTime * 10f);
+        animator.speed = 0.8f + movement.magnitude * 0.3f;
+
+        animator.SetFloat("speed", smoothSpeed);
 
         FlipToMouse();
-        Move();
         HandleShoot();
+    }
+
+    protected virtual void FixedUpdate()
+    {
+        Move();
     }
 
     private void Move()

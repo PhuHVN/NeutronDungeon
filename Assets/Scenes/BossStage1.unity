@@ -124989,7 +124989,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6eebe90692526a04d9a13c67fddf66b4, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::MageGirl
-  moveSpeed: 5
+  moveSpeed: 8
   maxHealth: 0
   currentHealth: 0
   firePoint: {fileID: 1803010998}
