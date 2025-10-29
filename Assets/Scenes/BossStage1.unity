@@ -5753,6 +5753,7 @@ GameObject:
   - component: {fileID: 1293813411}
   - component: {fileID: 1293813413}
   - component: {fileID: 1293813412}
+  - component: {fileID: 1293813414}
   m_Layer: 7
   m_Name: Wall
   m_TagString: Untagged
@@ -11966,6 +11967,44 @@ Tilemap:
     e31: 0
     e32: 0
     e33: 1
+--- !u!19719996 &1293813414
+TilemapCollider2D:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1293813410}
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Density: 1
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_ForceSendLayers:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_ForceReceiveLayers:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_ContactCaptureLayers:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_CallbackLayers:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_IsTrigger: 0
+  m_UsedByEffector: 0
+  m_CompositeOperation: 0
+  m_CompositeOrder: 0
+  m_Offset: {x: 0, y: 0}
+  m_MaximumTileChangeCount: 10000
+  m_ExtrusionFactor: 0
+  m_UseDelaunayMesh: 0
 --- !u!1001 &1320067844
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -124921,20 +124960,22 @@ PolygonCollider2D:
   m_AutoTiling: 0
   m_Points:
     m_Paths:
-    - - {x: 0.34173393, y: 0.47494876}
-      - {x: 0.19686341, y: 0.7418072}
-      - {x: -0.033951283, y: 0.8574439}
-      - {x: -0.39325857, y: 0.786283}
-      - {x: -0.7329118, y: 0.590122}
-      - {x: -0.5294938, y: 0.30367875}
-      - {x: -0.88412905, y: -0.021080494}
-      - {x: -0.59948516, y: -1.0533705}
-      - {x: 0.6875, y: -1}
-      - {x: 0.71512187, y: -0.8930242}
-      - {x: 0.5819293, y: -0.49087083}
-      - {x: 0.73360145, y: 0.053492785}
-      - {x: 0.9199439, y: 0.286049}
-      - {x: 0.62617075, y: 0.3843634}
+    - - {x: 0.3649288, y: 0.35897446}
+      - {x: 0.36696, y: 0.41707888}
+      - {x: 0.15160811, y: 0.5327161}
+      - {x: 0.13662748, y: 0.49598625}
+      - {x: -0.23862612, y: 0.4770184}
+      - {x: -0.5070912, y: 0.35276255}
+      - {x: -0.48310435, y: 0.30367875}
+      - {x: -0.55945337, y: 0.041932672}
+      - {x: -0.550279, y: -0.85449946}
+      - {x: 0.3206855, y: -1.0203786}
+      - {x: 0.5064213, y: -0.90660995}
+      - {x: 0.50908524, y: -0.5044564}
+      - {x: 0.52989215, y: -0.23386374}
+      - {x: 0.48905775, y: 0.01273559}
+      - {x: 0.5346284, y: 0.33033985}
+      - {x: 0.48727596, y: 0.39607167}
   m_UseDelaunayMesh: 0
 --- !u!114 &2057843594
 MonoBehaviour:
