@@ -5886,7 +5886,7 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1244550677}
-  m_Enabled: 1
+  m_Enabled: 0
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: a94ec34b4e89fdf4b8623d927a979b19, type: 3}
   m_Name: 
@@ -5909,7 +5909,7 @@ MonoBehaviour:
   ShowDebugText: 0
   ShowCameraFrustum: 1
   IgnoreTimeScale: 0
-  WorldUpOverride: {fileID: 0}
+  WorldUpOverride: {fileID: 286015115}
   ChannelMask: -1
   UpdateMethod: 2
   BlendUpdateMethod: 1
