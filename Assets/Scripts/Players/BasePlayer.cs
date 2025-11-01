@@ -108,4 +108,26 @@ public class BasePlayer : MonoBehaviour
         float angle = Mathf.Atan2(dir.y, dir.x) * Mathf.Rad2Deg;
         firePoint.rotation = Quaternion.Euler(0f, 0f, angle);
     }
+
+    public void TakeDamage(float damage)
+    {
+        currentHealth -= damage;
+        Debug.Log("Player took " + damage + " damage! Health is now: " + currentHealth);
+
+        if (currentHealth <= 0)
+        {
+            currentHealth = 0; // Don't let health go below zero
+            Debug.Log("Player has died.");
+
+            // --- Add your death logic here ---
+            // 1. Play death animation
+            // animator.SetTrigger("Die"); 
+
+            // 2. Disable this script so you can't move
+            // this.enabled = false; 
+
+            // 3. Destroy the player object after a delay
+            // Destroy(gameObject, 2f); 
+        }
+    }
 }
