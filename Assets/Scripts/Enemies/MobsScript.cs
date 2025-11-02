@@ -1,6 +1,8 @@
+﻿using Unity.VisualScripting;
 using UnityEngine;
+using static Unity.Cinemachine.IInputAxisOwner.AxisDescriptor;
 
-public class MobsScript : MonoBehaviour
+public class MobsScript : Enemy
 {
     // --- Tunable Parameters ---
     [Header("Patrol Settings")]
@@ -38,10 +40,8 @@ public class MobsScript : MonoBehaviour
         // 1. Get references
         rb = GetComponent<Rigidbody2D>();
         animator = GetComponent<Animator>();
-
         // Find the player (Make sure your player has the "Player" tag)
         player = GameObject.FindGameObjectWithTag("Player").transform;
-
         // 2. Set spawn point and initial state
         originPoint = transform.position;
         currentState = EnemyState.Patrolling;

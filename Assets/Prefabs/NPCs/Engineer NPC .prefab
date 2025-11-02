@@ -13,7 +13,7 @@ GameObject:
   - component: {fileID: 654114908979646540}
   m_Layer: 8
   m_Name: 'Engineer NPC '
-  m_TagString: Player
+  m_TagString: NPC
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
