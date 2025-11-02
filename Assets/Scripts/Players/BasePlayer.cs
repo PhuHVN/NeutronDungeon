@@ -109,7 +109,7 @@ public class BasePlayer : MonoBehaviour
         firePoint.rotation = Quaternion.Euler(0f, 0f, angle);
     }
 
-    public void TakeDamage(float damage)
+    public virtual void TakeDamage(float damage)
     {
         currentHealth -= damage;
         Debug.Log("Player took " + damage + " damage! Health is now: " + currentHealth);
