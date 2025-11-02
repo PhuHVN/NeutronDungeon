@@ -128,16 +128,16 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: dccfc5fe6bdd28c47a0bbbe59631bd5e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::BossEnemy
-  health: 5
   player: {fileID: 0}
   bulletPrefab: {fileID: 7752907514725047695, guid: 2720bbbd1c0ffec4ab36845be64cd124, type: 3}
-  fireRate: 1.5
-  bulletSpeed: 6
-  moveSpeed: 2
-  moveAreaMin: {x: -13, y: 20}
+  fireRate: 1.3
+  bulletSpeed: 8
+  moveSpeed: 4
+  moveAreaMin: {x: -10, y: 23}
   moveAreaMax: {x: 10, y: 33}
   changeDirInterval: 2
-  isClone: 0
+  maxHealth: 10
+  currentHealth: 0
 --- !u!50 &2051882981824785858
 Rigidbody2D:
   serializedVersion: 5

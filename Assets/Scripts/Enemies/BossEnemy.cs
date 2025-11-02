@@ -9,7 +9,7 @@ public class BossEnemy : Enemy
 
     [Header("Attack Settings")]
     public float fireRate = 1.5f;
-    public float bulletSpeed = 6f;
+    public float bulletSpeed = 10f;
     public float moveSpeed = 2f;
 
     [Header("Movement Range")]
@@ -18,22 +18,19 @@ public class BossEnemy : Enemy
     public float changeDirInterval = 2f;
 
     [Header("State")]
-    public bool isClone = false;
     private float nextFireTime;
     //private bool hasSplit = false;
-    private Animator animator;
     private Rigidbody2D rb;
     private Vector2 moveDir;
     private float nextChangeDirTime;
 
     [Header("Boss healthSettings")]
     public float maxHealth = 10f;
-    private float currentHealth;
+    public float currentHealth;
 
-    void Start()
+    public virtual void Start()
     {
         rb = GetComponent<Rigidbody2D>();
-        animator = GetComponent<Animator>();
 
         currentHealth = maxHealth;
 
@@ -47,12 +44,11 @@ public class BossEnemy : Enemy
         PickNewDirection();
     }
 
-    void Update()
+    public virtual void Update()
     {
         if (!player) return;
         HandleMovement();
         HandleShooting();
-        UpdateAnimation();
     }
 
     void HandleMovement()
@@ -96,7 +92,7 @@ public class BossEnemy : Enemy
         }
     }
 
-    void Shoot()
+    public virtual void Shoot()
     {
         if (!bulletPrefab || !player) return;
 
@@ -105,11 +101,6 @@ public class BossEnemy : Enemy
         bullet.GetComponent<Rigidbody2D>().linearVelocity = dir * bulletSpeed;
     }
 
-    void UpdateAnimation()
-    {
-        if (!animator) return;
-        animator.SetFloat("speed", rb.linearVelocity.magnitude);
-    }
 
     public void OnTriggerEnter2D(Collider2D collision)
     {
