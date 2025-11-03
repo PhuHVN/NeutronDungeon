@@ -11,6 +11,7 @@ TagManager:
   - HealthPotion
   - ArmorPickup
   - ManaPotion
+  - Weapon
   layers:
   - Default
   - TransparentFX

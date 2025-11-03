@@ -166,5 +166,34 @@ public class BasePlayer : MonoBehaviour
             playerHUD.UpdateEnergy(30, 30);
             Destroy(other.gameObject);
         }
+
+        // New weapon
+        else if (other.CompareTag("Weapon"))
+        {
+            Debug.Log("Nhặt được VŨ KHÍ!");
+
+            WeaponItem weapon = other.GetComponent<WeaponItem>();
+
+            if (weapon != null)
+            {
+                EquipWeapon(weapon.weaponStats);
+                Destroy(other.gameObject);
+            }
+        }
+    }
+
+    public void EquipWeapon(WeaponData data)
+    {
+        if (data == null)
+        {
+            Debug.LogError("Weapon Data bị rỗng!");
+            return;
+        }
+
+        this.bulletPrefab = data.newBulletPrefab;
+        this.shootCooldown = data.newShootCooldown;
+        this.bulletSpeed = data.newBulletSpeed;
+
+        Debug.Log("Đã trang bị vũ khí mới!");
     }
 }
