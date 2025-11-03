@@ -49,7 +49,7 @@ public class RoomController : MonoBehaviour
         if (!string.IsNullOrEmpty(nextLevelName))
         {
             Debug.Log("Final room cleared! Loading level: " + nextLevelName);
-            SceneManager.LoadScene(nextLevelName);
+            SceneManager.LoadSceneAsync(nextLevelName);
         }
         else
         {

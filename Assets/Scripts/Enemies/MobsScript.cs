@@ -238,8 +238,10 @@ public class MobsScript : Enemy
     public override void TakeDamage(float dmg)
     {
         currentHealth -= dmg;
+        Debug.Log("Enemy took damage. Current Health is now: " + currentHealth);
         if (currentHealth <= 0f)
         {
+            Debug.Log("Health is zero! Calling Die().");
             Die();
         }
     }
