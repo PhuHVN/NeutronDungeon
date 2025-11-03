@@ -363,11 +363,6 @@ Transform:
   - {fileID: 1836182607}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!4 &247983394 stripped
-Transform:
-  m_CorrespondingSourceObject: {fileID: 5364147221992060021, guid: 9cd967909401b2d4b8cbad57843fb7eb, type: 3}
-  m_PrefabInstance: {fileID: 2031609649}
-  m_PrefabAsset: {fileID: 0}
 --- !u!1 &253351366
 GameObject:
   m_ObjectHideFlags: 0
@@ -67509,7 +67504,6 @@ GameObject:
   - component: {fileID: 2051663304}
   - component: {fileID: 2051663303}
   - component: {fileID: 2051663302}
-  - component: {fileID: 2051663301}
   m_Layer: 0
   m_Name: CinemachineCamera
   m_TagString: Untagged
@@ -67517,35 +67511,6 @@ GameObject:
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
---- !u!114 &2051663301
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2051663300}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: f38bda98361e1de48a4ca2bd86ea3c17, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: Unity.Cinemachine::Unity.Cinemachine.CinemachineRotationComposer
-  Composition:
-    ScreenPosition: {x: 0, y: 0}
-    DeadZone:
-      Enabled: 0
-      Size: {x: 0.2, y: 0.2}
-    HardLimits:
-      Enabled: 0
-      Size: {x: 0.8, y: 0.8}
-      Offset: {x: 0, y: 0}
-  CenterOnActivate: 1
-  TargetOffset: {x: 0, y: 0, z: 0}
-  Damping: {x: 0, y: 0}
-  Lookahead:
-    Enabled: 0
-    Time: 0
-    Smoothing: 0
-    IgnoreY: 0
 --- !u!114 &2051663302
 MonoBehaviour:
   m_ObjectHideFlags: 0

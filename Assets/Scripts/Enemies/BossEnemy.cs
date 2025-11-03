@@ -28,8 +28,11 @@ public class BossEnemy : Enemy
     public float maxHealth = 10f;
     public float currentHealth;
 
+    public int totalDeathsToWin { get; private set; } = 0;
+
     public virtual void Start()
     {
+    
         rb = GetComponent<Rigidbody2D>();
 
         currentHealth = maxHealth;
@@ -59,11 +62,13 @@ public class BossEnemy : Enemy
         }
 
         Vector2 pos = transform.position;
+        bool bounced = false;
 
         if (pos.x < moveAreaMin.x || pos.x > moveAreaMax.x)
         {
             moveDir.x = -moveDir.x;
             pos.x = Mathf.Clamp(pos.x, moveAreaMin.x, moveAreaMax.x);
+            bounced = true;
             PickNewDirection(true);
         }
 
@@ -71,6 +76,12 @@ public class BossEnemy : Enemy
         {
             moveDir.y = -moveDir.y;
             pos.y = Mathf.Clamp(pos.y, moveAreaMin.y, moveAreaMax.y);
+            bounced = true;
+            PickNewDirection(true);
+        }
+        transform.position = pos;
+        if(bounced)
+        {
             PickNewDirection(true);
         }
 
@@ -88,7 +99,14 @@ public class BossEnemy : Enemy
         if (Time.time >= nextFireTime)
         {
             nextFireTime = Time.time + fireRate;
-            Shoot();
+            if (Random.value < 0.5f)
+            {
+                Shoot();
+            }
+            else
+            {
+                ShootAround();
+            }
         }
     }
 
@@ -99,7 +117,26 @@ public class BossEnemy : Enemy
         Vector2 dir = (player.position - transform.position).normalized;
         GameObject bullet = Instantiate(bulletPrefab, transform.position, Quaternion.identity);
         bullet.GetComponent<Rigidbody2D>().linearVelocity = dir * bulletSpeed;
+
     }
+    // shooting around
+    void ShootAround()
+    {
+        if (!bulletPrefab) return;
+        int bulletCount = 8;
+        float angleStep = 360f / bulletCount;
+        float angle = 0f;
+        for (int i = 0; i < bulletCount; i++)
+        {
+            float dirX = Mathf.Cos(angle * Mathf.Deg2Rad);
+            float dirY = Mathf.Sin(angle * Mathf.Deg2Rad);
+            Vector2 dir = new Vector2(dirX, dirY).normalized;
+            GameObject bullet = Instantiate(bulletPrefab, transform.position, Quaternion.identity);
+            bullet.GetComponent<Rigidbody2D>().linearVelocity = dir * bulletSpeed;
+            angle += angleStep;
+        }
+    }
+
 
 
     public void OnTriggerEnter2D(Collider2D collision)
@@ -117,11 +154,17 @@ public class BossEnemy : Enemy
         {
             Die();
         }
-    }  
+    }
 
     public override void Die()
     {
         base.Die();
+        var rs = GameManagement.Instance.incrementTotalDeathsToWin();
+        Debug.Log("Total Bosses Defeated: " + rs);
+        if (rs >= 3)
+        {
+            GameManagement.Instance.WinGame();
+        }
         // Add death effects here (animations, sounds, etc.)
         Destroy(gameObject);
     }
