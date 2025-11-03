@@ -19,6 +19,9 @@ public class MobsScript : Enemy
     [SerializeField] private float attackDamage = 10f;
     [SerializeField] private float attackCooldown = 1.5f;
 
+    [Header("Mobs healthSettings")]
+    public float maxHealth = 10f;
+    public float currentHealth;
     // --- Private State Variables ---
     private enum EnemyState { Patrolling, Chasing, Attacking }
     private EnemyState currentState;
@@ -40,6 +43,8 @@ public class MobsScript : Enemy
         // 1. Get references
         rb = GetComponent<Rigidbody2D>();
         animator = GetComponent<Animator>();
+        // Initialize mob health
+        currentHealth = maxHealth;
         // Find the player (Make sure your player has the "Player" tag)
         player = GameObject.FindGameObjectWithTag("Player").transform;
         // 2. Set spawn point and initial state
@@ -214,5 +219,29 @@ public class MobsScript : Enemy
         // Draw Attack Radius
         Gizmos.color = Color.red;
         Gizmos.DrawWireSphere(transform.position, attackRadius);
+    }
+
+    public void OnTriggerEnter2D(Collider2D collision)
+    {
+        if (collision.CompareTag("PlayerBullet"))
+        {
+            TakeDamage(1f);
+        }
+    }
+
+    public override void TakeDamage(float dmg)
+    {
+        currentHealth -= dmg;
+        if (currentHealth <= 0f)
+        {
+            Die();
+        }
+    }
+
+    public override void Die()
+    {
+        base.Die();
+        // Add death effects here (animations, sounds, etc.)
+        Destroy(gameObject);
     }
 }
