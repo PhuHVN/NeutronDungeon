@@ -24,6 +24,8 @@ public class BasePlayer : MonoBehaviour
     private Vector2 movement;
     private Rigidbody2D rb;
 
+    public PlayerStatsUI playerHUD;
+
     protected virtual void Awake()
     {
         if (instance == null)
@@ -37,9 +39,11 @@ public class BasePlayer : MonoBehaviour
         animator = GetComponent<Animator>();
         rb = GetComponent<Rigidbody2D>();
         spriteRenderer = GetComponent<SpriteRenderer>();
-        currentHealth = maxHealth;
+        // currentHealth = maxHealth;
         mainCam = Camera.main;
         rb.interpolation = RigidbodyInterpolation2D.Interpolate;
+
+        playerHUD.UpdateHealth(30, 50);
     }
 
     protected virtual void Update()
@@ -112,6 +116,9 @@ public class BasePlayer : MonoBehaviour
     public virtual void TakeDamage(float damage)
     {
         currentHealth -= damage;
+        // Decrease Health in HUD
+        playerHUD.UpdateHealth(currentHealth, maxHealth);
+
         Debug.Log("Player took " + damage + " damage! Health is now: " + currentHealth);
 
         if (currentHealth <= 0)
@@ -128,6 +135,34 @@ public class BasePlayer : MonoBehaviour
 
             // 3. Destroy the player object after a delay
             // Destroy(gameObject, 2f); 
+        }
+    }
+
+    void OnTriggerEnter2D(Collider2D other)
+    {
+        if (playerHUD == null)
+        {
+            Debug.LogError("Chưa kéo HUD_Frame vào MageGirl!");
+            return;
+        }
+
+        if (other.CompareTag("HealthPotion"))
+        {
+            Debug.Log("Nhặt được bình MÁU!");
+            playerHUD.UpdateHealth(currentHealth + 10, maxHealth);
+            Destroy(other.gameObject);
+        }
+        else if (other.CompareTag("ArmorPickup"))
+        {
+            Debug.Log("Nhặt được GIÁP!");
+            playerHUD.UpdateArmor(30, 30);
+            Destroy(other.gameObject);
+        }
+        else if (other.CompareTag("ManaPotion"))
+        {
+            Debug.Log("Nhặt được bình MANA!");
+            playerHUD.UpdateEnergy(30, 30);
+            Destroy(other.gameObject);
         }
     }
 }

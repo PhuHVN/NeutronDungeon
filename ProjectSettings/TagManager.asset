@@ -8,6 +8,9 @@ TagManager:
   - Enemy
   - BossBullet
   - NPC
+  - HealthPotion
+  - ArmorPickup
+  - ManaPotion
   layers:
   - Default
   - TransparentFX
@@ -21,7 +24,7 @@ TagManager:
   - CheckPoint
   - Enemy
   - BossBullet
-  - 
+  - Item
   - 
   - 
   - 

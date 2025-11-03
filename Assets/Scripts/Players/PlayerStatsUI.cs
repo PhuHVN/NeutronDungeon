@@ -2,67 +2,31 @@ using UnityEngine;
 using UnityEngine.UI;
 public class PlayerStatsUI : MonoBehaviour
 {
-    public float maxHealth = 100f;
-    public float maxArmor = 100f;
-    public float maxEnergy = 100f;
-
-    // Biến lưu giá trị hiện tại
-    private float currentHealth;
-    private float currentArmor;
-    private float currentEnergy;
-
     public Image healthFill;
     public Image armorFill;
     public Image energyFill;
 
-    void Start()
+    public void UpdateHealth(float currentHealth, float maxHealth)
     {
-        currentHealth = maxHealth - 50f;
-        currentArmor = maxArmor;
-        currentEnergy = maxEnergy;
-
-        UpdateUI();
-    }
-
-    void UpdateUI()
-    {
-        healthFill.fillAmount = currentHealth / maxHealth;
-        armorFill.fillAmount = currentArmor / maxArmor;
-        energyFill.fillAmount = currentEnergy / maxEnergy;
-    }
-
-    void Update()
-    {
-        if (Input.GetKeyDown(KeyCode.H))
+        if (healthFill != null && maxHealth > 0)
         {
-            TakeDamage(10f);
-        }
-
-        if (Input.GetKeyDown(KeyCode.J))
-        {
-            Heal(10f);
+            healthFill.fillAmount = currentHealth / maxHealth;
         }
     }
 
-    public void TakeDamage(float amount)
+    public void UpdateArmor(float currentArmor, float maxArmor)
     {
-        currentHealth -= amount;
-        if (currentHealth < 0)
+        if (armorFill != null && maxArmor > 0)
         {
-            currentHealth = 0;
+            armorFill.fillAmount = currentArmor / maxArmor;
         }
-
-        UpdateUI();
     }
 
-    public void Heal(float amount)
+    public void UpdateEnergy(float currentEnergy, float maxEnergy)
     {
-        currentHealth += amount;
-        if (currentHealth > maxHealth)
+        if (energyFill != null && maxEnergy > 0)
         {
-            currentHealth = maxHealth;
+            energyFill.fillAmount = currentEnergy / maxEnergy;
         }
-
-        UpdateUI();
     }
 }
