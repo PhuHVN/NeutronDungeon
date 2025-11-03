@@ -50,7 +50,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 2498651937865319866, guid: 6a26baff3b33fad47a19d5e5eddee44f, type: 3}
       propertyPath: m_Name
-      value: GameOverScene Variant
+      value: GameOverScene
       objectReference: {fileID: 0}
     - target: {fileID: 2498651937865319866, guid: 6a26baff3b33fad47a19d5e5eddee44f, type: 3}
       propertyPath: m_IsActive

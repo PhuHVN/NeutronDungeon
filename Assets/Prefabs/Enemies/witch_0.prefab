@@ -200,7 +200,7 @@ MonoBehaviour:
   moveAreaMin: {x: -44, y: 65}
   moveAreaMax: {x: -23, y: 80}
   changeDirInterval: 2
-  maxHealth: 10
+  maxHealth: 1
   currentHealth: 0
   spreadAngle: 15
   normalBulletCount: 3
