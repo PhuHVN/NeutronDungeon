@@ -194,15 +194,13 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::Boss3
   player: {fileID: 0}
   bulletPrefab: {fileID: 6127525861084168003, guid: 7f2545a67f0bc434088d8d03386f38aa, type: 3}
-  bulletPrefab2: {fileID: 6127525861084168003, guid: 7f2545a67f0bc434088d8d03386f38aa, type: 3}
-  bulletPrefab3: {fileID: 0}
   fireRate: 1.2
   bulletSpeed: 11
   moveSpeed: 6
   moveAreaMin: {x: -44, y: 65}
   moveAreaMax: {x: -23, y: 80}
   changeDirInterval: 2
-  maxHealth: 10
+  maxHealth: 1
   currentHealth: 0
   spreadAngle: 15
   normalBulletCount: 3

@@ -28,7 +28,7 @@ public class BossEnemy : Enemy
     public float maxHealth = 10f;
     public float currentHealth;
 
-   
+    public int totalDeathsToWin { get; private set; } = 0;
 
     public virtual void Start()
     {
@@ -135,7 +135,6 @@ public class BossEnemy : Enemy
             bullet.GetComponent<Rigidbody2D>().linearVelocity = dir * bulletSpeed;
             angle += angleStep;
         }
-        Destroy(bulletPrefab, 5f);
     }
 
 
@@ -160,6 +159,12 @@ public class BossEnemy : Enemy
     public override void Die()
     {
         base.Die();
+        var rs = GameManagement.Instance.incrementTotalDeathsToWin();
+        Debug.Log("Total Bosses Defeated: " + rs);
+        if (rs >= 3)
+        {
+            GameManagement.Instance.WinGame();
+        }
         // Add death effects here (animations, sounds, etc.)
         Destroy(gameObject);
     }
