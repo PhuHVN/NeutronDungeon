@@ -10,7 +10,19 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 2844265964759669045, guid: 3f44b48df214dcc4e82ea9afd7870aa0, type: 3}
       propertyPath: m_Name
-      value: GhostWarrior Variant
+      value: GhostWarrior
+      objectReference: {fileID: 0}
+    - target: {fileID: 4464429434163945490, guid: 3f44b48df214dcc4e82ea9afd7870aa0, type: 3}
+      propertyPath: m_LocalScale.x
+      value: 1.2
+      objectReference: {fileID: 0}
+    - target: {fileID: 4464429434163945490, guid: 3f44b48df214dcc4e82ea9afd7870aa0, type: 3}
+      propertyPath: m_LocalScale.y
+      value: 1.2
+      objectReference: {fileID: 0}
+    - target: {fileID: 4464429434163945490, guid: 3f44b48df214dcc4e82ea9afd7870aa0, type: 3}
+      propertyPath: m_LocalScale.z
+      value: 1.2
       objectReference: {fileID: 0}
     - target: {fileID: 4464429434163945490, guid: 3f44b48df214dcc4e82ea9afd7870aa0, type: 3}
       propertyPath: m_LocalPosition.x
