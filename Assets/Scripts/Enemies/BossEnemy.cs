@@ -6,8 +6,6 @@ public class BossEnemy : Enemy
     [Header("References")]
     public Transform player;
     public GameObject bulletPrefab;
-    public GameObject bulletPrefab2;
-    public GameObject bulletPrefab3;
 
     [Header("Attack Settings")]
     public float fireRate = 1.5f;
@@ -30,8 +28,11 @@ public class BossEnemy : Enemy
     public float maxHealth = 10f;
     public float currentHealth;
 
+   
+
     public virtual void Start()
     {
+    
         rb = GetComponent<Rigidbody2D>();
 
         currentHealth = maxHealth;
@@ -61,11 +62,13 @@ public class BossEnemy : Enemy
         }
 
         Vector2 pos = transform.position;
+        bool bounced = false;
 
         if (pos.x < moveAreaMin.x || pos.x > moveAreaMax.x)
         {
             moveDir.x = -moveDir.x;
             pos.x = Mathf.Clamp(pos.x, moveAreaMin.x, moveAreaMax.x);
+            bounced = true;
             PickNewDirection(true);
         }
 
@@ -73,6 +76,12 @@ public class BossEnemy : Enemy
         {
             moveDir.y = -moveDir.y;
             pos.y = Mathf.Clamp(pos.y, moveAreaMin.y, moveAreaMax.y);
+            bounced = true;
+            PickNewDirection(true);
+        }
+        transform.position = pos;
+        if(bounced)
+        {
             PickNewDirection(true);
         }
 
@@ -113,7 +122,7 @@ public class BossEnemy : Enemy
     // shooting around
     void ShootAround()
     {
-        if (!bulletPrefab2) return;
+        if (!bulletPrefab) return;
         int bulletCount = 8;
         float angleStep = 360f / bulletCount;
         float angle = 0f;
@@ -122,10 +131,11 @@ public class BossEnemy : Enemy
             float dirX = Mathf.Cos(angle * Mathf.Deg2Rad);
             float dirY = Mathf.Sin(angle * Mathf.Deg2Rad);
             Vector2 dir = new Vector2(dirX, dirY).normalized;
-            GameObject bullet = Instantiate(bulletPrefab2, transform.position, Quaternion.identity);
+            GameObject bullet = Instantiate(bulletPrefab, transform.position, Quaternion.identity);
             bullet.GetComponent<Rigidbody2D>().linearVelocity = dir * bulletSpeed;
             angle += angleStep;
         }
+        Destroy(bulletPrefab, 5f);
     }
 
 
