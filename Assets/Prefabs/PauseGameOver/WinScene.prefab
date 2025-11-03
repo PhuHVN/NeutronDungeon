@@ -1,6 +1,6 @@
 %YAML 1.1
 %TAG !u! tag:unity3d.com,2011:
---- !u!1001 &3103904270754129434
+--- !u!1001 &3671515635092983431
 PrefabInstance:
   m_ObjectHideFlags: 0
   serializedVersion: 2
@@ -10,11 +10,11 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 1961064564987670491, guid: 6a26baff3b33fad47a19d5e5eddee44f, type: 3}
       propertyPath: m_LocalPosition.x
-      value: -5.89973
+      value: -0.07184
       objectReference: {fileID: 0}
     - target: {fileID: 1961064564987670491, guid: 6a26baff3b33fad47a19d5e5eddee44f, type: 3}
       propertyPath: m_LocalPosition.y
-      value: 2.18101
+      value: 0.80916
       objectReference: {fileID: 0}
     - target: {fileID: 1961064564987670491, guid: 6a26baff3b33fad47a19d5e5eddee44f, type: 3}
       propertyPath: m_LocalPosition.z
@@ -50,47 +50,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 2498651937865319866, guid: 6a26baff3b33fad47a19d5e5eddee44f, type: 3}
       propertyPath: m_Name
-      value: GameOverScene
-      objectReference: {fileID: 0}
-    - target: {fileID: 2498651937865319866, guid: 6a26baff3b33fad47a19d5e5eddee44f, type: 3}
-      propertyPath: m_IsActive
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 3521987644278295472, guid: 6a26baff3b33fad47a19d5e5eddee44f, type: 3}
-      propertyPath: m_Name
-      value: GameOverScenee
-      objectReference: {fileID: 0}
-    - target: {fileID: 4788372163934111953, guid: 6a26baff3b33fad47a19d5e5eddee44f, type: 3}
-      propertyPath: m_Name
-      value: GameOverText
-      objectReference: {fileID: 0}
-    - target: {fileID: 5916498397228418339, guid: 6a26baff3b33fad47a19d5e5eddee44f, type: 3}
-      propertyPath: m_Name
-      value: RestartButton
-      objectReference: {fileID: 0}
-    - target: {fileID: 6724708623541907339, guid: 6a26baff3b33fad47a19d5e5eddee44f, type: 3}
-      propertyPath: m_text
-      value: Replay
-      objectReference: {fileID: 0}
-    - target: {fileID: 6978153905773567615, guid: 6a26baff3b33fad47a19d5e5eddee44f, type: 3}
-      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
-      value: 
-      objectReference: {fileID: 0}
-    - target: {fileID: 6978153905773567615, guid: 6a26baff3b33fad47a19d5e5eddee44f, type: 3}
-      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
-      value: 
-      objectReference: {fileID: 0}
-    - target: {fileID: 7183786354504749872, guid: 6a26baff3b33fad47a19d5e5eddee44f, type: 3}
-      propertyPath: m_text
-      value: GAME OVER
-      objectReference: {fileID: 0}
-    - target: {fileID: 7816303117398079955, guid: 6a26baff3b33fad47a19d5e5eddee44f, type: 3}
-      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
-      value: 
-      objectReference: {fileID: 0}
-    - target: {fileID: 7816303117398079955, guid: 6a26baff3b33fad47a19d5e5eddee44f, type: 3}
-      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
-      value: 
+      value: WinScene Variant
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
