@@ -10,7 +10,7 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 2844265964759669045, guid: 3f44b48df214dcc4e82ea9afd7870aa0, type: 3}
       propertyPath: m_Name
-      value: GhostBlueKnight Variant
+      value: GhostBlueKnight
       objectReference: {fileID: 0}
     - target: {fileID: 4464429434163945490, guid: 3f44b48df214dcc4e82ea9afd7870aa0, type: 3}
       propertyPath: m_LocalPosition.x
@@ -60,6 +60,10 @@ PrefabInstance:
       propertyPath: m_Sprite
       value: 
       objectReference: {fileID: 4820271017159589825, guid: 5130f062043cfc14a979d2bfec54b091, type: 3}
+    - target: {fileID: 6693607325517488283, guid: 3f44b48df214dcc4e82ea9afd7870aa0, type: 3}
+      propertyPath: m_CollisionDetection
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 7981497132259257694, guid: 3f44b48df214dcc4e82ea9afd7870aa0, type: 3}
       propertyPath: m_SpriteTilingProperty.oldSize.x
       value: 1.4375
