@@ -168,4 +168,4 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5462133dbd21a0043943579fec7cb273, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::BulletBoss1
-  lifetime: 9
+  lifetime: 4

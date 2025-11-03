@@ -16,6 +16,7 @@ public class ClickEvent : MonoBehaviour
 
     void Start()
     {
+        AudioManage.instance.PlayMusicBackgroudStart();
         infoPanel.SetActive(false);
 
         play.onClick.AddListener(OnPlayClick);
@@ -27,22 +28,28 @@ public class ClickEvent : MonoBehaviour
 
     void OnPlayClick()
     {
+        AudioManage.instance.PlayButtonClickSound();
+        AudioManage.instance.StopMusic();
         SceneManager.LoadSceneAsync(SceneManager.GetActiveScene().buildIndex + 1);
     }
 
     void OnSettingsClick()
     {
+        AudioManage.instance.PlayButtonClickSound();
         Debug.Log("Settings Button Clicked");
     }
 
     void OnExitClick()
     {
+        AudioManage.instance.PlayButtonClickSound();
+        AudioManage.instance.StopMusic();
         Application.Quit();
         Debug.Log("Exit Button Clicked");
     }
 
     void ToggleInfoPanel()
     {
+        AudioManage.instance.PlayButtonClickSound();
         infoPanel.SetActive(!infoPanel.activeSelf);
     }
 }
