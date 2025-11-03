@@ -6,6 +6,8 @@ public class BossEnemy : Enemy
     [Header("References")]
     public Transform player;
     public GameObject bulletPrefab;
+    public GameObject bulletPrefab2;
+    public GameObject bulletPrefab3;
 
     [Header("Attack Settings")]
     public float fireRate = 1.5f;
@@ -92,7 +94,14 @@ public class BossEnemy : Enemy
         if (Time.time >= nextFireTime)
         {
             nextFireTime = Time.time + fireRate;
-            Shoot();
+            if (Random.value < 0.5f)
+            {
+                Shoot();
+            }
+            else
+            {
+                ShootAround();
+            }
         }
     }
 
@@ -103,7 +112,26 @@ public class BossEnemy : Enemy
         Vector2 dir = (player.position - transform.position).normalized;
         GameObject bullet = Instantiate(bulletPrefab, transform.position, Quaternion.identity);
         bullet.GetComponent<Rigidbody2D>().linearVelocity = dir * bulletSpeed;
+
     }
+    // shooting around
+    void ShootAround()
+    {
+        if (!bulletPrefab2) return;
+        int bulletCount = 8;
+        float angleStep = 360f / bulletCount;
+        float angle = 0f;
+        for (int i = 0; i < bulletCount; i++)
+        {
+            float dirX = Mathf.Cos(angle * Mathf.Deg2Rad);
+            float dirY = Mathf.Sin(angle * Mathf.Deg2Rad);
+            Vector2 dir = new Vector2(dirX, dirY).normalized;
+            GameObject bullet = Instantiate(bulletPrefab2, transform.position, Quaternion.identity);
+            bullet.GetComponent<Rigidbody2D>().linearVelocity = dir * bulletSpeed;
+            angle += angleStep;
+        }
+    }
+
 
     void UpdateAnimation()
     {
@@ -126,7 +154,7 @@ public class BossEnemy : Enemy
         {
             Die();
         }
-    }  
+    }
 
     public override void Die()
     {
