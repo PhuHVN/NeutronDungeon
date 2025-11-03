@@ -44,6 +44,8 @@ public class BasePlayer : MonoBehaviour
         rb.interpolation = RigidbodyInterpolation2D.Interpolate;
 
         playerHUD.UpdateHealth(30, 50);
+        playerHUD.UpdateArmor(0, 20);
+        playerHUD.UpdateEnergy(0, 20);
     }
 
     protected virtual void Update()
