@@ -27,7 +27,7 @@ public class WaveController : MonoBehaviour
             int rand = Random.Range(0, enemyPrefabs.Length);
             GameObject enemy = Instantiate(enemyPrefabs[rand], point.position, Quaternion.identity, room.transform);
             enemy.gameObject.SetActive(true);
-
+        
             Enemy e = enemy.GetComponent<Enemy>();
             e.onDeath += OnEnemyDeath;
         }
@@ -38,6 +38,17 @@ public class WaveController : MonoBehaviour
         enemyCount--;
         if (enemyCount <= 0)
         {
+            room.OnWaveCleared();
+        }
+    }
+
+    public void EnemyHasDied()
+    {
+        enemyCount--;
+        Debug.Log("An enemy died! Enemies remaining: " + enemyCount);
+        if (enemyCount <= 0)
+        {
+            Debug.Log("WAVE CLEARED! Telling RoomController...");
             room.OnWaveCleared();
         }
     }

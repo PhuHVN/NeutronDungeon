@@ -29,7 +29,6 @@ public class MobsScript : Enemy
     private Transform player;
     private Rigidbody2D rb;
     private Animator animator;
-
     private Vector2 originPoint;
     private Vector2 patrolTarget;
     private float patrolWaitTimer;
@@ -38,13 +37,18 @@ public class MobsScript : Enemy
     private float stuckTimer = 0.3f;
     private float maxStuckTime = 3f;
 
+
+    public WaveController waveController { get; set; }
+    private void Awake()
+    {
+        // Initialize mob health
+        currentHealth = maxHealth;
+    }
     void Start()
     {
         // 1. Get references
         rb = GetComponent<Rigidbody2D>();
         animator = GetComponent<Animator>();
-        // Initialize mob health
-        currentHealth = maxHealth;
         // Find the player (Make sure your player has the "Player" tag)
         player = GameObject.FindGameObjectWithTag("Player").transform;
         // 2. Set spawn point and initial state
@@ -223,8 +227,10 @@ public class MobsScript : Enemy
 
     public void OnTriggerEnter2D(Collider2D collision)
     {
+        Debug.Log("OnTriggerEnter2D was called by: " + collision.gameObject.name);
         if (collision.CompareTag("PlayerBullet"))
         {
+            Debug.Log("The object was a PlayerBullet!");
             TakeDamage(1f);
         }
     }
@@ -242,6 +248,10 @@ public class MobsScript : Enemy
     {
         base.Die();
         // Add death effects here (animations, sounds, etc.)
+        //if(waveController != null)
+        //{
+        //    waveController.EnemyHasDied();
+        //}
         Destroy(gameObject);
     }
 }
