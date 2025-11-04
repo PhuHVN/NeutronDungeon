@@ -4,6 +4,7 @@ public class AudioManage : MonoBehaviour
 {
     public static AudioManage instance;
     private AudioSource m_AudioSource;
+    private AudioSource sfx_AudioSource;
     [SerializeField] private AudioClip buttonClip;
     [SerializeField] private AudioClip musicBackgroudStart;
     [SerializeField] private AudioClip musicBackgroudInGame;
@@ -27,7 +28,18 @@ public class AudioManage : MonoBehaviour
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
-        m_AudioSource = GetComponent<AudioSource>();
+        //Get or create 2 audio source component
+        AudioSource[] audioSources = GetComponents<AudioSource>();
+        if(audioSources.Length > 0)
+        {
+            m_AudioSource = audioSources[0];
+            sfx_AudioSource = audioSources[1];
+        }
+        else
+        {
+            m_AudioSource = gameObject.AddComponent<AudioSource>();
+            sfx_AudioSource = gameObject.AddComponent<AudioSource>();
+        }
     }
 
     // Update is called once per frame

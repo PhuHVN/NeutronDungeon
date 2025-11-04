@@ -31,6 +31,8 @@ public class MageBuller1 : MonoBehaviour
         if (collision.CompareTag("Enemy"))
         {
             Debug.Log("Hit Enemy");
+            //Play hit sound when hit enemy
+            AudioManage.instance.PlayHitSound();
         }
 
         Destroy(gameObject);
