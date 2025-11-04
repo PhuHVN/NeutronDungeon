@@ -8,6 +8,10 @@ TagManager:
   - Enemy
   - BossBullet
   - NPC
+  - HealthPotion
+  - ArmorPickup
+  - ManaPotion
+  - Weapon
   layers:
   - Default
   - TransparentFX
@@ -22,7 +26,7 @@ TagManager:
   - Enemy
   - BossBullet
   - EnemyWall
-  - 
+  - Item
   - 
   - 
   - 
