@@ -29,7 +29,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 4596359315426066007}
   serializedVersion: 2
-  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
@@ -227,7 +227,7 @@ MonoBehaviour:
   moveSpeed: 15
   maxHealth: 0
   currentHealth: 0
-  firePoint: {fileID: 0}
+  firePoint: {fileID: 6135863601477495645}
   bulletPrefab: {fileID: 1960555180798644468, guid: c6143c6ef66db74498d8d924e6e593a1, type: 3}
   shootCooldown: 0.25
   bulletSpeed: 10
