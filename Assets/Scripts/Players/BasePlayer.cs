@@ -95,6 +95,7 @@ public class BasePlayer : MonoBehaviour
         float angle = Mathf.Atan2(shootDir.y, shootDir.x) * Mathf.Rad2Deg;
         firePoint.rotation = Quaternion.Euler(0f, 0f, angle);
         bullet.transform.rotation = firePoint.rotation;
+        AudioManage.instance?.PlayShootSound();
     }
 
     void FlipToMouse()
