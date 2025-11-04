@@ -59,7 +59,6 @@ public class BasePlayer : MonoBehaviour
         animator.speed = 0.8f + movement.magnitude * 0.3f;
 
         animator.SetFloat("speed", smoothSpeed);
-
         FlipToMouse();
         HandleShoot();
     }

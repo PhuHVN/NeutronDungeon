@@ -16,7 +16,7 @@ public class ClickEvent : MonoBehaviour
 
     void Start()
     {
-        AudioManage.instance.PlayMusicBackgroudStart();
+        AudioManage.instance.PlayMusicBackgroundStart();
         infoPanel.SetActive(false);
 
         play.onClick.AddListener(OnPlayClick);
