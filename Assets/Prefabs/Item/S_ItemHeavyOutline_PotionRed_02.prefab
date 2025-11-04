@@ -11,7 +11,7 @@ GameObject:
   - component: {fileID: 8079600620412570698}
   - component: {fileID: 6670749705850777972}
   - component: {fileID: 4377122760460852178}
-  m_Layer: 12
+  m_Layer: 13
   m_Name: S_ItemHeavyOutline_PotionRed_02
   m_TagString: HealthPotion
   m_Icon: {fileID: 0}

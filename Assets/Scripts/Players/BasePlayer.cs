@@ -39,13 +39,13 @@ public class BasePlayer : MonoBehaviour
         animator = GetComponent<Animator>();
         rb = GetComponent<Rigidbody2D>();
         spriteRenderer = GetComponent<SpriteRenderer>();
-        // currentHealth = maxHealth;
+        currentHealth = maxHealth;
         mainCam = Camera.main;
         rb.interpolation = RigidbodyInterpolation2D.Interpolate;
 
-        playerHUD.UpdateHealth(30, 50);
-        playerHUD.UpdateArmor(0, 20);
-        playerHUD.UpdateEnergy(0, 20);
+        playerHUD.UpdateHealth(currentHealth, maxHealth);
+        playerHUD.UpdateArmor(20, 20);
+        playerHUD.UpdateEnergy(20, 20);
     }
 
     protected virtual void Update()
