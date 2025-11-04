@@ -16,12 +16,12 @@ public class GameManagement : MonoBehaviour
             Destroy(gameObject);
         }
     }
-    // Start is called once before the first execution of Update after the MonoBehaviour is created
+    // Start is called once before the first execution of Update after the MonoBehavior is created
     void Start()
     {
         if(AudioManage.instance != null)
         {
-            AudioManage.instance.PlayMusicBackgroudInGame();
+            AudioManage.instance.PlayMusicBackgroundInGame();
         }
     }
 
