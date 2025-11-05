@@ -14,6 +14,7 @@ public class ClickEvent : MonoBehaviour
     public GameObject infoPanel;
     public Button infoExitButton;
 
+ 
     void Start()
     {
         AudioManage.instance.PlayMusicBackgroundStart();

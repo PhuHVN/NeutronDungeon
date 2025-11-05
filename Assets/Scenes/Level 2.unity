@@ -58891,6 +58891,10 @@ PrefabInstance:
       propertyPath: moveSpeed
       value: 15
       objectReference: {fileID: 0}
+    - target: {fileID: -8084427117396691592, guid: 2e6bede9c33a1a545be61be2aebea22b, type: 3}
+      propertyPath: playerHUD
+      value: 
+      objectReference: {fileID: 1688670481}
     - target: {fileID: 4596359315426066007, guid: 2e6bede9c33a1a545be61be2aebea22b, type: 3}
       propertyPath: m_Name
       value: Assasin
@@ -60795,9 +60799,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2ca9b01b587253dba848312041a50c44, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::PlayerStatsUI
-  maxHealth: 100
-  maxArmor: 100
-  maxEnergy: 100
   healthFill: {fileID: 2052754483}
   armorFill: {fileID: 43185813}
   energyFill: {fileID: 1500073303}
