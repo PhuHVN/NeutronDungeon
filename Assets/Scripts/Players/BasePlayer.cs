@@ -18,6 +18,9 @@ public class BasePlayer : MonoBehaviour
     public float bulletSpeed = 10f;
     private float shootTimer;
 
+    [Header("Coin")]
+    public int currentCoins;
+
     private Camera mainCam;
     private Animator animator;
     private SpriteRenderer spriteRenderer;
@@ -195,5 +198,11 @@ public class BasePlayer : MonoBehaviour
         this.bulletSpeed = data.newBulletSpeed;
 
         Debug.Log("Đã trang bị vũ khí mới!");
+    }
+
+    public void AddCoint(int amount)
+    {
+        this.currentCoins += amount;
+        Debug.Log("Hiện có: " + this.currentCoins + " xu.");
     }
 }
