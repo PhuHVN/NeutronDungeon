@@ -225,12 +225,14 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::Assassin
   moveSpeed: 15
-  maxHealth: 0
+  maxHealth: 100
   currentHealth: 0
   firePoint: {fileID: 6135863601477495645}
   bulletPrefab: {fileID: 1960555180798644468, guid: c6143c6ef66db74498d8d924e6e593a1, type: 3}
   shootCooldown: 0.25
   bulletSpeed: 10
+  currentCoins: 10
+  playerHUD: {fileID: 0}
 --- !u!1 &8046959118573490403
 GameObject:
   m_ObjectHideFlags: 0

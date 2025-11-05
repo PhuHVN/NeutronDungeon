@@ -171,18 +171,18 @@ public class BasePlayer : MonoBehaviour
         }
 
         // New weapon
-        else if (other.CompareTag("Weapon"))
-        {
-            Debug.Log("Nhặt được VŨ KHÍ!");
+        //else if (other.CompareTag("Weapon"))
+        //{
+        //    Debug.Log("Nhặt được VŨ KHÍ!");
 
-            WeaponItem weapon = other.GetComponent<WeaponItem>();
+        //    WeaponItem weapon = other.GetComponent<WeaponItem>();
 
-            if (weapon != null)
-            {
-                EquipWeapon(weapon.weaponStats);
-                Destroy(other.gameObject);
-            }
-        }
+        //    if (weapon != null)
+        //    {
+        //        EquipWeapon(weapon.weaponStats);
+        //        Destroy(other.gameObject);
+        //    }
+        //}
     }
 
     public void EquipWeapon(WeaponData data)

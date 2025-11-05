@@ -262,7 +262,7 @@ public class MobsScript : Enemy
         BasePlayer player = FindAnyObjectByType<BasePlayer>();
         if(player != null)
         {
-            player.AddCoint(cointDropAmount);
+            player.AddCoin(cointDropAmount);
             Debug.Log("Dropped " + cointDropAmount + " coins. Player now has " + player.currentCoins + " coins.");
         }
         else
