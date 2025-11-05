@@ -1,19 +1,23 @@
 using System.Collections.Generic;
 using UnityEngine;
-using UnityEngine.SceneManagement; // <-- 1. ADD THIS LINE
+using UnityEngine.SceneManagement;
 
 public class RoomController : MonoBehaviour
 {
     public CheckpointTrigger checkpoint;
     public WaveController wave;
 
-    private bool isCleared = false;
+    // --- CHANGE 1: Make this a public property ---
+    // Change this line:
+    // private bool isCleared = false;
+    // To this:
+    public bool IsCleared { get; private set; } = false;
+
 
     [Header("Level Exit Settings")]
     [Tooltip("Check this ONLY for the final room (e.g., Room6)")]
     public bool isFinalRoom = false;
 
-    // 2. ADD THIS LINE to tell it *which* level to load
     [Tooltip("The name of the scene to load if this is the final room")]
     public string nextLevelName;
 
@@ -25,27 +29,46 @@ public class RoomController : MonoBehaviour
 
     public void OnPlayerEnter()
     {
-        if (isCleared) return;
+        // --- CHANGE 2: Use the new property ---
+        if (IsCleared) return;
         wave.StartWave();
     }
 
     public void OnWaveCleared()
     {
-        isCleared = true;
-        Debug.Log("Room has been cleared!"); // Good for testing
+        // --- CHANGE 3: Use the property and REMOVE the loading logic ---
+        IsCleared = true;
+        Debug.Log("Room has been cleared!");
 
-        // --- 3. ADD THIS LOGIC ---
-        // Check if this specific room is the final one
-        if (isFinalRoom)
+        // --- DELETE THIS WHOLE BLOCK ---
+        // if (isFinalRoom)
+        // {
+        //     LoadNextScene();
+        // }
+        // ---------------------------------
+
+        // (Optional: You could play a "portal open" sound here)
+    }
+
+    // --- CHANGE 4: Add this new public function ---
+    // The new portal script will call this function.
+    public void AttemptToExit()
+    {
+        // Only load the scene if this IS the final room AND it has been cleared.
+        if (isFinalRoom && IsCleared)
         {
             LoadNextScene();
         }
+        else if (isFinalRoom && !IsCleared)
+        {
+            // Optional: Show a "defeat all enemies" message
+            Debug.Log("You must defeat all enemies first!");
+        }
     }
 
-    // --- 4. ADD THIS NEW FUNCTION ---
+    // This function stays exactly the same.
     private void LoadNextScene()
     {
-        // Check if the name field isn't empty
         if (!string.IsNullOrEmpty(nextLevelName))
         {
             Debug.Log("Final room cleared! Loading level: " + nextLevelName);
@@ -53,7 +76,6 @@ public class RoomController : MonoBehaviour
         }
         else
         {
-            // Error message if you forgot to set the name in the Inspector
             Debug.LogError("isFinalRoom is checked, but no nextLevelName was set!", this);
         }
     }
