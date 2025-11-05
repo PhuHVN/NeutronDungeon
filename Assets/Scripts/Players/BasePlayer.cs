@@ -18,6 +18,9 @@ public class BasePlayer : MonoBehaviour
     public float bulletSpeed = 10f;
     private float shootTimer;
 
+    [Header("Coin")]
+    public int currentCoins;
+
     private Camera mainCam;
     private Animator animator;
     private SpriteRenderer spriteRenderer;
@@ -168,18 +171,18 @@ public class BasePlayer : MonoBehaviour
         }
 
         // New weapon
-        else if (other.CompareTag("Weapon"))
-        {
-            Debug.Log("Nhặt được VŨ KHÍ!");
+        //else if (other.CompareTag("Weapon"))
+        //{
+        //    Debug.Log("Nhặt được VŨ KHÍ!");
 
-            WeaponItem weapon = other.GetComponent<WeaponItem>();
+        //    WeaponItem weapon = other.GetComponent<WeaponItem>();
 
-            if (weapon != null)
-            {
-                EquipWeapon(weapon.weaponStats);
-                Destroy(other.gameObject);
-            }
-        }
+        //    if (weapon != null)
+        //    {
+        //        EquipWeapon(weapon.weaponStats);
+        //        Destroy(other.gameObject);
+        //    }
+        //}
     }
 
     public void EquipWeapon(WeaponData data)
@@ -195,5 +198,11 @@ public class BasePlayer : MonoBehaviour
         this.bulletSpeed = data.newBulletSpeed;
 
         Debug.Log("Đã trang bị vũ khí mới!");
+    }
+
+    public void AddCoin(int amount)
+    {
+        this.currentCoins += amount;
+        Debug.Log("Hiện có: " + this.currentCoins + " xu.");
     }
 }

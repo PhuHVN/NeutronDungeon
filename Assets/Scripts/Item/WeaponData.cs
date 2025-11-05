@@ -7,4 +7,5 @@ public class WeaponData : ScriptableObject
     public GameObject newBulletPrefab;
     public float newShootCooldown;
     public float newBulletSpeed;
+    public int price;
 }

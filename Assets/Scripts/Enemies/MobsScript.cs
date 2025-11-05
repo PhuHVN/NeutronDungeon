@@ -22,6 +22,9 @@ public class MobsScript : Enemy
     [Header("Mobs healthSettings")]
     public float maxHealth = 10f;
     public float currentHealth;
+
+    [Header("Loot Drop")]
+    public int cointDropAmount = 5;
     // --- Private State Variables ---
     private enum EnemyState { Patrolling, Chasing, Attacking }
     private EnemyState currentState;
@@ -254,6 +257,18 @@ public class MobsScript : Enemy
         //{
         //    waveController.EnemyHasDied();
         //}
+        
+        //Drop coins
+        BasePlayer player = FindAnyObjectByType<BasePlayer>();
+        if(player != null)
+        {
+            player.AddCoin(cointDropAmount);
+            Debug.Log("Dropped " + cointDropAmount + " coins. Player now has " + player.currentCoins + " coins.");
+        }
+        else
+        {
+            Debug.LogWarning("Could not find player to drop coins to.");
+        }
         Destroy(gameObject);
     }
 }

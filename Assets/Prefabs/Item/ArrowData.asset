@@ -15,3 +15,4 @@ MonoBehaviour:
   newBulletPrefab: {fileID: 1420837832031285091, guid: 60a3c6c8df2e35b56acd91500e661a3f, type: 3}
   newShootCooldown: 0.2
   newBulletSpeed: 10
+  price: 150
