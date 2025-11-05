@@ -1,5 +1,6 @@
-using TMPro;
+
 using UnityEngine;
+using TMPro;
 
 public class BuyableItems : MonoBehaviour
 {
@@ -9,7 +10,7 @@ public class BuyableItems : MonoBehaviour
 
     [Header("Visuals")]
     [Tooltip("Drag the TextMeshPro text for the price tag here")]
-    public TextMeshPro priceText;
+    public TextMeshProUGUI priceText;
 
     private void Start()
     {
@@ -35,7 +36,7 @@ public class BuyableItems : MonoBehaviour
                 // 4. SUCCESS: Player can afford it!
 
                 // Subtract coins
-                player.AddCoins(-weaponData.price);
+                player.AddCoin(-weaponData.price);
 
                 // Give the weapon
                 player.EquipWeapon(weaponData);

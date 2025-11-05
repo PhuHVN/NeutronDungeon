@@ -200,7 +200,7 @@ public class BasePlayer : MonoBehaviour
         Debug.Log("Đã trang bị vũ khí mới!");
     }
 
-    public void AddCoint(int amount)
+    public void AddCoin(int amount)
     {
         this.currentCoins += amount;
         Debug.Log("Hiện có: " + this.currentCoins + " xu.");
