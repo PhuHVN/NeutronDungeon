@@ -230,7 +230,7 @@ public class MobsScript : Enemy
 
     public void OnTriggerEnter2D(Collider2D collision)
     {
-        Debug.Log("OnTriggerEnter2D was called by: " + collision.gameObject.name);
+        //Debug.Log("OnTriggerEnter2D was called by: " + collision.gameObject.name);
         if (collision.CompareTag("PlayerBullet"))
         {
             Debug.Log("The object was a PlayerBullet!");

@@ -11,6 +11,7 @@ public class ExitRoomPortal : MonoBehaviour
         if (collision.CompareTag("Player"))
         {
             Debug.Log("Player entered the exit portal.");
+            roomController.AttemptToExit();
 
             // Ask the RoomController if we are allowed to leave
             if (roomController != null)
