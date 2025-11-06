@@ -1,11 +1,13 @@
+using TMPro;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class BasePlayer : MonoBehaviour
 {
     public static BasePlayer instance;
 
     [Header("Movement")]
-    [SerializeField] private float moveSpeed = 5f;
+    [SerializeField] private float moveSpeed = 15f;
 
     [Header("Health")]
     public float maxHealth;
@@ -18,11 +20,22 @@ public class BasePlayer : MonoBehaviour
     public float bulletSpeed = 10f;
     private float shootTimer;
 
+    [Header("Coin")]
+    public TMP_Text coinUI;
+    public int currentCoins;
+
     private Camera mainCam;
     private Animator animator;
     private SpriteRenderer spriteRenderer;
     private Vector2 movement;
     private Rigidbody2D rb;
+
+    [Header("Cheat")]
+    public GameObject Cheat;
+    private string cheatInput = "";
+    private bool isCheat = false;
+
+    public PlayerStatsUI playerHUD;
 
     protected virtual void Awake()
     {
@@ -39,17 +52,34 @@ public class BasePlayer : MonoBehaviour
         spriteRenderer = GetComponent<SpriteRenderer>();
         currentHealth = maxHealth;
         mainCam = Camera.main;
+        rb.interpolation = RigidbodyInterpolation2D.Interpolate;
+
+        playerHUD.UpdateHealth(currentHealth, maxHealth);
+        playerHUD.UpdateArmor(20, 20);
+        playerHUD.UpdateEnergy(20, 20);
+        if (coinUI != null)
+            coinUI.text = currentCoins.ToString();
     }
 
     protected virtual void Update()
     {
+        HandleCheatInput();
         movement.x = Input.GetAxisRaw("Horizontal");
         movement.y = Input.GetAxisRaw("Vertical");
-        animator.SetFloat("speed", Mathf.Abs(movement.sqrMagnitude));
 
+        float targetSpeed = movement.magnitude;
+        float currentSpeed = animator.GetFloat("speed");
+        float smoothSpeed = Mathf.Lerp(currentSpeed, targetSpeed, Time.deltaTime * 10f);
+        animator.speed = 0.8f + movement.magnitude * 0.3f;
+
+        animator.SetFloat("speed", smoothSpeed);
         FlipToMouse();
-        Move();
         HandleShoot();
+    }
+
+    protected virtual void FixedUpdate()
+    {
+        Move();
     }
 
     private void Move()
@@ -84,6 +114,7 @@ public class BasePlayer : MonoBehaviour
         float angle = Mathf.Atan2(shootDir.y, shootDir.x) * Mathf.Rad2Deg;
         firePoint.rotation = Quaternion.Euler(0f, 0f, angle);
         bullet.transform.rotation = firePoint.rotation;
+        AudioManage.instance?.PlayShootSound();
     }
 
     void FlipToMouse()
@@ -96,5 +127,158 @@ public class BasePlayer : MonoBehaviour
         Vector2 dir = (mousePos - firePoint.position).normalized;
         float angle = Mathf.Atan2(dir.y, dir.x) * Mathf.Rad2Deg;
         firePoint.rotation = Quaternion.Euler(0f, 0f, angle);
+    }
+
+    public virtual void TakeDamage(float damage)
+    {
+        if (this.isCheat == false)
+        {
+            currentHealth -= damage;
+            // Decrease Health in HUD
+            playerHUD.UpdateHealth(currentHealth, maxHealth);
+
+            Debug.Log("Player took " + damage + " damage! Health is now: " + currentHealth);
+
+            if (currentHealth <= 0)
+            {
+                currentHealth = 0; // Don't let health go below zero
+                Debug.Log("Player has died.");
+
+                // --- Add your death logic here ---
+                // 1. Play death animation
+                // animator.SetTrigger("Die"); 
+
+                // 2. Disable this script so you can't move
+                // this.enabled = false; 
+                // 3. Destroy the player object after a delay
+                // Destroy(gameObject, 2f); 
+            }
+        }
+        else
+        {
+            return;
+        }
+    }
+
+    void OnTriggerEnter2D(Collider2D other)
+    {
+        if (playerHUD == null)
+        {
+            Debug.LogError("Chưa kéo HUD_Frame vào MageGirl!");
+            return;
+        }
+
+        if (other.CompareTag("HealthPotion"))
+        {
+            //Debug.Log("Nhặt được bình MÁU!");
+            //playerHUD.UpdateHealth(currentHealth + 10, maxHealth);
+            //Destroy(other.gameObject);
+            // 1. Only heal if health is not already full
+            if (currentHealth < maxHealth)
+            {
+                Debug.Log("Nhặt được bình MÁU!");
+
+                // 2. Actually add the health to your variable
+                currentHealth += 10;
+
+                // 3. Make sure health doesn't go over the max
+                if (currentHealth > maxHealth)
+                {
+                    currentHealth = maxHealth;
+                }
+
+                // 4. Now, update the HUD with the new, correct value
+                playerHUD.UpdateHealth(currentHealth, maxHealth);
+
+                Destroy(other.gameObject);
+            }
+            else
+            {
+                // Optional: Log if you are already at full health
+                Debug.Log("Already at full health!");
+            }
+        }
+        else if (other.CompareTag("ArmorPickup"))
+        {
+            Debug.Log("Nhặt được GIÁP!");
+            playerHUD.UpdateArmor(30, 30);
+            Destroy(other.gameObject);
+        }
+        else if (other.CompareTag("ManaPotion"))
+        {
+            Debug.Log("Nhặt được bình MANA!");
+            playerHUD.UpdateEnergy(30, 30);
+            Destroy(other.gameObject);
+        }
+
+        // New weapon
+        //else if (other.CompareTag("Weapon"))
+        //{
+        //    Debug.Log("Nhặt được VŨ KHÍ!");
+
+        //    WeaponItem weapon = other.GetComponent<WeaponItem>();
+
+        //    if (weapon != null)
+        //    {
+        //        EquipWeapon(weapon.weaponStats);
+        //        Destroy(other.gameObject);
+        //    }
+        //}
+    }
+
+    public void EquipWeapon(WeaponData data)
+    {
+        if (data == null)
+        {
+            Debug.LogError("Weapon Data bị rỗng!");
+            return;
+        }
+
+        this.bulletPrefab = data.newBulletPrefab;
+        this.shootCooldown = data.newShootCooldown;
+        this.bulletSpeed = data.newBulletSpeed;
+
+        Debug.Log("Đã trang bị vũ khí mới!");
+    }
+
+    public void AddCoin(int amount)
+    {
+        this.currentCoins += amount;
+        Debug.Log("Hiện có: " + this.currentCoins + " xu.");
+        if (coinUI != null)
+        {
+            coinUI.text = this.currentCoins.ToString();
+        }
+    }
+
+    private void HandleCheatInput()
+    {
+        foreach (char c in Input.inputString)
+        {
+            if (c == '\n' || c == '\r')
+            {
+                CheckCheatCode();
+                cheatInput = "";
+            }
+            else
+            {
+                cheatInput += char.ToLower(c);
+                if (cheatInput.Length > 20)
+                    cheatInput = cheatInput.Substring(cheatInput.Length - 20);
+            }
+        }
+    }
+
+    private void CheckCheatCode()
+    {
+        MobsScript monsterCollision = GetComponent<MobsScript>();
+        BasePlayer player = GetComponent<BasePlayer>();
+        
+        if (cheatInput.Contains("cheat"))
+        {
+            Debug.Log("Cheat code activated!");
+            player.isCheat = !player.isCheat;
+            Cheat.SetActive(player.isCheat);
+        }
     }
 }
