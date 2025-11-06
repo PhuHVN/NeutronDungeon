@@ -27,6 +27,11 @@ public class BasePlayer : MonoBehaviour
     private Vector2 movement;
     private Rigidbody2D rb;
 
+    [Header("Cheat")]
+    public GameObject Cheat;
+    private string cheatInput = "";
+    private bool isCheat = false;
+
     public PlayerStatsUI playerHUD;
 
     protected virtual void Awake()
@@ -53,6 +58,7 @@ public class BasePlayer : MonoBehaviour
 
     protected virtual void Update()
     {
+        HandleCheatInput();
         movement.x = Input.GetAxisRaw("Horizontal");
         movement.y = Input.GetAxisRaw("Vertical");
 
@@ -120,26 +126,32 @@ public class BasePlayer : MonoBehaviour
 
     public virtual void TakeDamage(float damage)
     {
-        currentHealth -= damage;
-        // Decrease Health in HUD
-        playerHUD.UpdateHealth(currentHealth, maxHealth);
-
-        Debug.Log("Player took " + damage + " damage! Health is now: " + currentHealth);
-
-        if (currentHealth <= 0)
+        if (this.isCheat == false)
         {
-            currentHealth = 0; // Don't let health go below zero
-            Debug.Log("Player has died.");
+            currentHealth -= damage;
+            // Decrease Health in HUD
+            playerHUD.UpdateHealth(currentHealth, maxHealth);
 
-            // --- Add your death logic here ---
-            // 1. Play death animation
-            // animator.SetTrigger("Die"); 
+            Debug.Log("Player took " + damage + " damage! Health is now: " + currentHealth);
 
-            // 2. Disable this script so you can't move
-            // this.enabled = false; 
+            if (currentHealth <= 0)
+            {
+                currentHealth = 0; // Don't let health go below zero
+                Debug.Log("Player has died.");
 
-            // 3. Destroy the player object after a delay
-            // Destroy(gameObject, 2f); 
+                // --- Add your death logic here ---
+                // 1. Play death animation
+                // animator.SetTrigger("Die"); 
+
+                // 2. Disable this script so you can't move
+                // this.enabled = false; 
+                // 3. Destroy the player object after a delay
+                // Destroy(gameObject, 2f); 
+            }
+        }
+        else
+        {
+            return;
         }
     }
 
@@ -228,5 +240,36 @@ public class BasePlayer : MonoBehaviour
     {
         this.currentCoins += amount;
         Debug.Log("Hiện có: " + this.currentCoins + " xu.");
+    }
+
+    private void HandleCheatInput()
+    {
+        foreach (char c in Input.inputString)
+        {
+            if (c == '\n' || c == '\r')
+            {
+                CheckCheatCode();
+                cheatInput = "";
+            }
+            else
+            {
+                cheatInput += char.ToLower(c);
+                if (cheatInput.Length > 20)
+                    cheatInput = cheatInput.Substring(cheatInput.Length - 20);
+            }
+        }
+    }
+
+    private void CheckCheatCode()
+    {
+        MobsScript monsterCollision = GetComponent<MobsScript>();
+        BasePlayer player = GetComponent<BasePlayer>();
+        
+        if (cheatInput.Contains("cheat"))
+        {
+            Debug.Log("Cheat code activated!");
+            player.isCheat = !player.isCheat;
+            Cheat.SetActive(player.isCheat);
+        }
     }
 }
