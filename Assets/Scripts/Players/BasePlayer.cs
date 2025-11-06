@@ -1,4 +1,6 @@
+using TMPro;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class BasePlayer : MonoBehaviour
 {
@@ -19,6 +21,7 @@ public class BasePlayer : MonoBehaviour
     private float shootTimer;
 
     [Header("Coin")]
+    public TMP_Text coinUI;
     public int currentCoins;
 
     private Camera mainCam;
@@ -54,6 +57,8 @@ public class BasePlayer : MonoBehaviour
         playerHUD.UpdateHealth(currentHealth, maxHealth);
         playerHUD.UpdateArmor(20, 20);
         playerHUD.UpdateEnergy(20, 20);
+        if (coinUI != null)
+            coinUI.text = currentCoins.ToString();
     }
 
     protected virtual void Update()
@@ -240,6 +245,10 @@ public class BasePlayer : MonoBehaviour
     {
         this.currentCoins += amount;
         Debug.Log("Hiện có: " + this.currentCoins + " xu.");
+        if (coinUI != null)
+        {
+            coinUI.text = this.currentCoins.ToString();
+        }
     }
 
     private void HandleCheatInput()
