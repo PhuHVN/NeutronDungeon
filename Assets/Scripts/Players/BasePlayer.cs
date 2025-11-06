@@ -153,9 +153,33 @@ public class BasePlayer : MonoBehaviour
 
         if (other.CompareTag("HealthPotion"))
         {
-            Debug.Log("Nhặt được bình MÁU!");
-            playerHUD.UpdateHealth(currentHealth + 10, maxHealth);
-            Destroy(other.gameObject);
+            //Debug.Log("Nhặt được bình MÁU!");
+            //playerHUD.UpdateHealth(currentHealth + 10, maxHealth);
+            //Destroy(other.gameObject);
+            // 1. Only heal if health is not already full
+            if (currentHealth < maxHealth)
+            {
+                Debug.Log("Nhặt được bình MÁU!");
+
+                // 2. Actually add the health to your variable
+                currentHealth += 10;
+
+                // 3. Make sure health doesn't go over the max
+                if (currentHealth > maxHealth)
+                {
+                    currentHealth = maxHealth;
+                }
+
+                // 4. Now, update the HUD with the new, correct value
+                playerHUD.UpdateHealth(currentHealth, maxHealth);
+
+                Destroy(other.gameObject);
+            }
+            else
+            {
+                // Optional: Log if you are already at full health
+                Debug.Log("Already at full health!");
+            }
         }
         else if (other.CompareTag("ArmorPickup"))
         {
