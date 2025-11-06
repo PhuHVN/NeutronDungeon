@@ -13,10 +13,10 @@ public class BulletBoss1 : MonoBehaviour
     {
         if (other.CompareTag("Player"))
         {
-            BasePlayer player = other.GetComponent<BasePlayer>();
-            if (player != null)
+            BasePlayer playerHealth = other.GetComponent<BasePlayer>();
+            if (playerHealth != null)
             {
-                player.TakeDamage(10f);
+                playerHealth.TakeDamage(1f);
             }
             Destroy(gameObject);
         }
