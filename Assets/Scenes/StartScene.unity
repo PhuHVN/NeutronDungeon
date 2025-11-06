@@ -2829,6 +2829,18 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 2611830386246760494, guid: b65634e5c93b5d84eb5b70e86a03177c, type: 3}
+      propertyPath: musicBossInGame
+      value: 
+      objectReference: {fileID: 8300000, guid: d2355fd0e7dbe714683987cc1d296c6e, type: 3}
+    - target: {fileID: 2611830386246760494, guid: b65634e5c93b5d84eb5b70e86a03177c, type: 3}
+      propertyPath: musicBackgroundStart
+      value: 
+      objectReference: {fileID: 8300000, guid: 6a6aecef175751443b87321f370ed330, type: 3}
+    - target: {fileID: 2611830386246760494, guid: b65634e5c93b5d84eb5b70e86a03177c, type: 3}
+      propertyPath: musicBackgroundInGame
+      value: 
+      objectReference: {fileID: 8300000, guid: befd359b1bb8927428d7eea13c9503c5, type: 3}
     - target: {fileID: 3708657682471918800, guid: b65634e5c93b5d84eb5b70e86a03177c, type: 3}
       propertyPath: m_LocalPosition.x
       value: -0.69319

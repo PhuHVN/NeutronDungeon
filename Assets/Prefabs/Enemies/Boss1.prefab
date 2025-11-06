@@ -227,7 +227,7 @@ MonoBehaviour:
   moveAreaMin: {x: -10, y: 23}
   moveAreaMax: {x: 10, y: 33}
   changeDirInterval: 2
-  maxHealth: 1
+  maxHealth: 15
   currentHealth: 0
 --- !u!50 &2051882981824785858
 Rigidbody2D:
