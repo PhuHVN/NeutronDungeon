@@ -8,6 +8,14 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 2165549223342440489, guid: 3f44b48df214dcc4e82ea9afd7870aa0, type: 3}
+      propertyPath: maxHealth
+      value: 15
+      objectReference: {fileID: 0}
+    - target: {fileID: 2165549223342440489, guid: 3f44b48df214dcc4e82ea9afd7870aa0, type: 3}
+      propertyPath: cointDropAmount
+      value: 30
+      objectReference: {fileID: 0}
     - target: {fileID: 2844265964759669045, guid: 3f44b48df214dcc4e82ea9afd7870aa0, type: 3}
       propertyPath: m_Name
       value: Boar

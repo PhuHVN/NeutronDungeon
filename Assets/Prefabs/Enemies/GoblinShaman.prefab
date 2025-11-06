@@ -74,7 +74,7 @@ PrefabInstance:
       objectReference: {fileID: 9100000, guid: 89b25fdffbd96814c95943aa39aaf95c, type: 2}
     - target: {fileID: 8293271591742704511, guid: d03fe6ed136b28d4f86a46e976736d2c, type: 3}
       propertyPath: maxHealth
-      value: 15
+      value: 5
       objectReference: {fileID: 0}
     - target: {fileID: 8293271591742704511, guid: d03fe6ed136b28d4f86a46e976736d2c, type: 3}
       propertyPath: currentHealth
@@ -82,7 +82,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 8293271591742704511, guid: d03fe6ed136b28d4f86a46e976736d2c, type: 3}
       propertyPath: cointDropAmount
-      value: 45
+      value: 5
       objectReference: {fileID: 0}
     - target: {fileID: 8294066978579068184, guid: d03fe6ed136b28d4f86a46e976736d2c, type: 3}
       propertyPath: m_Name
