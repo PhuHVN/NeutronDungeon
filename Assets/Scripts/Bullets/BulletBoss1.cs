@@ -20,5 +20,6 @@ public class BulletBoss1 : MonoBehaviour
             }
             Destroy(gameObject);
         }
+
     }
 }
