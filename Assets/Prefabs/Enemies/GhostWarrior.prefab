@@ -17,8 +17,16 @@ PrefabInstance:
       value: 2.375
       objectReference: {fileID: 0}
     - target: {fileID: 2165549223342440489, guid: 3f44b48df214dcc4e82ea9afd7870aa0, type: 3}
+      propertyPath: maxHealth
+      value: 20
+      objectReference: {fileID: 0}
+    - target: {fileID: 2165549223342440489, guid: 3f44b48df214dcc4e82ea9afd7870aa0, type: 3}
       propertyPath: currentHealth
       value: 10
+      objectReference: {fileID: 0}
+    - target: {fileID: 2165549223342440489, guid: 3f44b48df214dcc4e82ea9afd7870aa0, type: 3}
+      propertyPath: cointDropAmount
+      value: 45
       objectReference: {fileID: 0}
     - target: {fileID: 2844265964759669045, guid: 3f44b48df214dcc4e82ea9afd7870aa0, type: 3}
       propertyPath: m_Name
