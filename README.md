@@ -43,7 +43,7 @@ The game focuses on fast-paced combat and skillful movement, offering both chall
 - **Energy Orb ⚡:** Temporarily boosts movement speed and fire rate.  
 
 **Cheat Code:**  
-Type `cheat` during gameplay to activate special powers or infinite ammo (developer mode).  
+Type `cheat` during gameplay to activate (developer mode).  
 
 ---
 
@@ -74,7 +74,7 @@ Type `cheat` during gameplay to activate special powers or infinite ammo (develo
 
 ## 🎥 10. Dường dẫn game deploy
 
-🎮 Link web game: 
+🎮 Link web game: https://phu04.itch.io/neutron-dungeon
 
 ---
 
